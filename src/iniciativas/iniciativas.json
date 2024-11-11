@@ -1,5 +1,0 @@
-{
-    "tags": "iniciativas",
-    "permalink": "iniciativas/{{ page.fileSlug }}/index.html",
-    "layout": "layouts/iniciativas.njk"
-}

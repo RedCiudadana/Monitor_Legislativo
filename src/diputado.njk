@@ -1,0 +1,14 @@
+---
+pagination:
+  data: diputados
+  size: 1
+  alias: diputado
+  addAllPagesToCollections: true
+permalink: "{{ diputado['Bloque al que representa'] | slug }}/{{ diputado['Nombre'] | slug }}/index.html"
+tags:
+  - diputado
+---
+{% extends "src/base.njk" %}
+
+{% block head %}
+{% endblock %}

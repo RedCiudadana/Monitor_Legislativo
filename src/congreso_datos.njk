@@ -1,0 +1,59 @@
+---
+permalink: "congreso_datos/index.html"
+---
+
+{% extends "src/base.njk" %}
+
+{% block head %}
+<title>Congreso en Datos | Monitor Legislativo</title>
+{% endblock %}
+
+{% block content %}
+
+        <!-- Slider
+		============================================= -->
+		<section id="slider" class="bg-color">
+			<div class="container">
+				<div class="row d-flex">
+					<div class="col-lg-6 col-md-12 col-sm-12 d-flex align-self-center flex-column pt-5 pb-0 py-lg-6 mb-0 my-lg-4">
+
+						<h2 class="text-slider" style="font-size:40px!important">Congreso en Datos</h2>
+						<h2 class="text-slider2">
+                            Bienvenido a la sección de Recursos de Red Ciudadana, tu centro de aprendizaje y herramientas para la transformación digital
+						</h2>
+
+					</div>
+
+                    <div class="col-lg-6 col-md-12 col-sm-12 d-flex justify-content-end align-self-center flex-column pt-5 pb-0 py-lg-6 mb-0 my-lg-4">
+
+						<img src="/assets/img/slider/recursos.png">
+
+					</div>
+				</div>
+			</div>
+        </section>
+
+        <!-- Iniciativas
+        ============================================= -->
+
+        <section class="px-2">
+            <div class="container clearfix ">
+                <div class="row py-6">
+                    <div class="col-lg-4">
+                        
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="row">
+                            {% for diputado in collections.diputado %}
+                            <div class="col-lg-3">
+                                <h1>{{diputado.data.diputado['Nombre']}}</h1>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+{% endblock %}
