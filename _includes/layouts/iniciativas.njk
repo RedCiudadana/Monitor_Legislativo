@@ -1,0 +1,72 @@
+{% extends "src/base.njk" %}
+
+{% block head %}
+<title>{{ title }}</title>
+<link rel="stylesheet" href="/css/maingrid.css" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    
+<!-- Slider
+		============================================= -->
+		<section id="slider" class="bg-color">
+			<div class="container">
+				<div class="row d-flex justify-content-center">
+					<div class="col-lg-9 col-md-12 col-sm-12 d-flex align-self-center flex-column pt-5 pb-0 py-lg-6 mb-0 my-lg-4">
+
+						<h2 class="text-slider mb-4" style="font-size:40px!important">{{title}}</h2>
+
+
+					</div>
+				</div>
+			</div>
+    </section>
+
+<!--POST-->
+<div class="max-w-screen-lg mx-auto " style="margin:3rem auto; padding:0 2rem">
+  <div class="grid grid-cols-4">
+    <div class="col-span-full">
+      <article>
+        <header>
+          <br>
+          <h6 class=" font-bold text-1xl text-gray-800">
+            {{ description }}
+          </h6>
+          <br>
+          <div class=" text-sm text-gray-600 ">
+         
+              <span class="text-sm font-semibold text-gray-900">
+                <!--autor correo fecha-->
+                {{ date|dateFormat('DD/MM/YYYY')}}
+              </span>
+          </div>
+          <br>
+        </header>
+
+        <style>
+  
+          @media (max-width: 760px){
+              .presponsive{
+                  padding-left: 0!important;
+              }
+          }
+  
+        </style>
+        
+        <section class="content text-justify">
+          <div class="grid grid-cols-8">
+            <div class="col-span-6 md:col-span-4 ">
+              {{ content | safe}}
+            </div>
+          
+          </div>
+
+        </section>
+        
+      </article>
+    </div>
+    
+  </div>
+</div>
+
+{% endblock %}

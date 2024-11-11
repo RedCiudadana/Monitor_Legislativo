@@ -1,0 +1,168 @@
+---
+permalink: "index.html"
+---
+
+{% extends "src/base.njk" %}
+
+{% block head %}
+<title>Monitor Legislativo | Red Ciudadana</title>
+{% endblock %}
+
+{% block content %}
+
+        <!-- Slider
+		============================================= -->
+		<section id="slider" class="slider-element px-2">
+			<div class="container" style="padding: 20px 0;">
+				<div class="h-100-res">
+                    <div class="pt-4">
+                        <!-- <h2 class="text-titles text-center" style="font-family: 'Metropolis-Medium'!important;font-weight: 500!important;">Lorem Ipsum dolor sit amet, consectetur adipiscing elit,</h2> -->
+                        <h2 class="text-titles text-center">Monitor Legislativo </h2>
+                    </div>
+                   
+                </div>
+			</div>
+        </section>
+
+
+        <!-- Lineas de Accion
+        ============================================= -->
+
+        <section class="px-2" style="background-color: #fff;">
+            <div class="container clearfix ">
+                <div class="row py-6">
+
+                    <div class="col-lg-4">
+                        <a href="#">
+                            <div class="cuadros_accion">
+                                <img src="/assets/img/iconos/01.png">
+                                <h2>Parlamento Abierto</h2>
+                                <p>Lorem Ipsum Dolor sit amet consectetur dolores sit, Lorem Ipsum Dolor sit amet</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <a href="#">
+                            <div class="cuadros_accion">
+                                <img src="/assets/img/iconos/02.png">
+                                <h2>Congreso en Datos</h2>
+                                <p>Lorem Ipsum Dolor sit amet consectetur dolores sit, Lorem Ipsum Dolor sit amet</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <a href="#">
+                            <div class="cuadros_accion">
+                                <img src="/assets/img/iconos/03.png">
+                                <h2>Análisis Legislativo</h2>
+                                <p>Lorem Ipsum Dolor sit amet consectetur dolores sit, Lorem Ipsum Dolor sit amet</p>
+                            </div>
+                        </a>
+                    </div> 
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Cifras Destacadas
+        ============================================= -->
+
+        <!-- <section class="px-2">
+            <div class="container clearfix ">
+                <div class="row py-6">
+
+                    <div class="col-lg-12 text-center mb-4">
+
+                        <h1 class="text-titles3">Descubre cómo estamos simplificando los trámites para mejorar tu vida cotidiana.</h1>
+                    </div>
+                    
+                    <div class="col-lg-4 border-right-res">
+                        <h2 class="text-titles4 mb-0">Cifras destacadas</h2>
+                        <h1 style="font-size: 140px;font-family: 'Metropolis-Bold',sans-serif;font-weight: 800; line-height: 150px;">70%</h1>
+                        <h2 class="text-titles4">Trámites digitales</h2>
+                    </div>
+
+                    <div class="col-lg-8" style="padding-left: 20px;">
+                        <div class="row " >
+                            <div class="col-lg-4 my-4 ">
+                                <span>1,300</span>
+                                <h3 class="text-titles3">Trámites</h3>
+                                <p>Con clave única para autenticación</p>
+                            </div>
+                            <div class="col-lg-4 my-4">
+                                <span>50</span>
+                                <h3 class="text-titles3">Instituciones</h3>
+                                <p>Con coordinador de transformación digital</p>
+                            </div>
+                            <div class="col-lg-4 my-4">
+                                <span>300</span>
+                                <h3 class="text-titles3">Oficinas de Partes</h3>
+                                <p>Utilizando Doc digital</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section> -->
+
+        <!-- Transformacion Digital
+        ============================================= -->
+
+        <section class="px-2" style="background-color: #e9f0f8;">
+            <div class="container clearfix ">
+                <div class="row py-6">
+                    
+                    <div class="col-lg-12 text-center mb-4">
+
+                        <h1 class="text-titles">Recursos</h1>
+
+                        <!-- <a href="#" class="btn">Ir a productos <i class="fa-solid fa-right-long"></i></a> -->
+                    </div>
+
+                    {% for recurso in collections.recursos%}
+                    <div class="col-lg-4">
+                        <div class="cuadro_recurso">
+                            <img class="w-100" src="{{recurso.data.image}}">
+                            <div style="padding: 30px;">
+                                <h1>{{recurso.data.title}}</h1>
+                                <p>{{recurso.data.description}}</p>
+                                <a href="" class="btn">Descargar <i class="fa-solid fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Videos
+        ============================================= -->
+
+        <section class="px-2">
+            <div class="container clearfix ">
+                <div class="row py-6">
+
+                    {% for video in collections.videos | limit(2) | reverse %}
+                    
+                    <div class="col-lg-6 text-center">
+                        <iframe width="560" height="315" src="{{video.data.link | safe}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+
+                    {% endfor %}
+
+
+
+
+                </div>
+            </div>
+        </section>
+
+{% endblock %}
+
+{% block body_javascripts %}
+
+{% endblock %}

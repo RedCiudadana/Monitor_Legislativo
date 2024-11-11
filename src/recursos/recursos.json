@@ -1,0 +1,4 @@
+{
+    "tags": "recursos",
+    "permalink": "recursos/{{ page.fileSlug }}/index.html"
+}

@@ -1,0 +1,153 @@
+{% extends "src/base.njk" %}
+
+{% block head %}
+<title>{{ title }}</title>
+<link rel="stylesheet" href="/css/maingrid.css" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    
+
+<!-- Slider
+		============================================= -->
+		<section id="slider" class="bg-color">
+			<div class="container">
+				<div class="row d-flex justify-content-center">
+					<div class="col-lg-8 col-md-12 col-sm-12 d-flex align-self-center flex-column pt-5 pb-0 py-lg-6 mb-0 my-lg-4 text-center">
+
+            {% if title == "Gobierno Digital" %}
+						<img style="width: 20%;margin: auto;" src="/assets/img/iconos/TD-46.png">
+            {% elif title == "Interoperabilidad" %}
+            <img style="width: 20%;margin: auto;" src="/assets/img/iconos/TD-47.png">
+            {% elif title == "Datos Abiertos" %}
+            <img style="width: 20%;margin: auto;" src="/assets/img/iconos/TD-48.png">
+            {% elif title == "Accesibilidad e Inclusión Digital" %}
+            <img style="width: 20%;margin: auto;" src="/assets/img/iconos/TD-49.png">
+            {% elif title == "Tecnologías Emergentes" %}
+            <img style="width: 20%;margin: auto;" src="/assets/img/iconos/TD-50.png">
+            {% elif title == "Infraestructura Pública Digital" %}
+            <img style="width: 20%;margin: auto;" src="/assets/img/iconos/TD-51.png">
+            {% endif%}
+						<h2 class="text-slider mb-4" style="font-size:40px!important">{{title}}</h2>
+            <p class=" text-1xl">
+              {{ description }}
+            </p>
+
+
+					</div>
+				</div>
+			</div>
+    </section>
+
+<!--POST-->
+<div class="max-w-screen-lg mx-auto " style="margin:3rem auto; padding:0 2rem">
+  <div class="grid grid-cols-4">
+    <div class="col-span-full">
+      <article>
+        <header>
+          <br>
+          
+          <br>
+          <div class=" text-sm text-gray-600 ">
+         
+              <span class="text-sm font-semibold text-gray-900">
+                <!--autor correo fecha-->
+                {{ date|dateFormat('DD/MM/YYYY')}}
+              </span>
+          </div>
+          <br>
+        </header>
+
+        <style>
+  
+          @media (max-width: 760px){
+              .presponsive{
+                  padding-left: 0!important;
+              }
+          }
+  
+        </style>
+        
+        <section class="content text-justify">
+          <div class="grid grid-cols-8">
+            <div class="col-span-6 md:col-span-4 ">
+              {{ content | safe}}
+            </div>
+          
+          </div>
+
+        </section>
+        
+      </article>
+    </div>
+    
+  </div>
+</div>
+
+<!-- Transformacion Digital
+        ============================================= -->
+
+        <section class="px-2" style="background-color: #e9f0f8;">
+          <div class="container clearfix ">
+              <div class="row py-6">
+                  
+                  <div class="col-lg-12 text-center mb-4">
+
+                      <h1 class="text-titles">Ver más dominios:</h1>
+
+                      <!-- <a href="#" class="btn">Ir a productos <i class="fa-solid fa-right-long"></i></a> -->
+                  </div>
+
+                  <div class="col-lg-4 my-4 text-center">
+                      <a href="/transformacion/gobierno-digital/index.html"><div class="cuadro_plataformas">
+                          <img src="/assets/img/iconos/TD-46.png">
+                          <h2 class="text-titles hover_white">Gobierno Digital</h2>
+                          <p>Integración y eficiencia en cada clic.</p>
+                      </div></a>
+                  </div>
+
+                  <div class="col-lg-4 my-4 text-center">
+                      <a href="/transformacion/interoperabilidad/index.html"><div class="cuadro_plataformas">
+                          <img src="/assets/img/iconos/TD-47.png">
+                          <h2 class="text-titles hover_white">Interoperabilidad</h2>
+                          <p>Sistemas conectados para una gestión pública sin barreras.</p>
+                      </div></a>
+                  </div>
+
+                  <div class="col-lg-4 my-4 text-center">
+                      <a href="/transformacion/datos-abiertos/index.html"><div class="cuadro_plataformas">
+                          <img src="/assets/img/iconos/TD-48.png">
+                          <h2 class="text-titles hover_white">Datos Abiertos</h2>
+                          <p>Información pública al alcance de todos, fortaleciendo la transparencia y la rendición de cuentas.</p>
+                      </div></a>
+                  </div>
+
+                  <div class="col-lg-4 my-4 text-center">
+                      <a href="/transformacion/accesibilidad-e-inclusión-digital/index.html"><div class="cuadro_plataformas">
+                          <img src="/assets/img/iconos/TD-49.png">
+                          <h2 class="text-titles hover_white">Accesabilidad e Inclusión Digital</h2>
+                          <p>Comprometidos con un acceso igualitario a la información y los servicios digitales.</p>
+                      </div></a>
+                  </div>
+
+                  <div class="col-lg-4 my-4 text-center">
+                      <a href="/transformacion/tecnologías-emergentes/index.html"><div class="cuadro_plataformas">
+                          <img src="/assets/img/iconos/TD-50.png">
+                          <h2 class="text-titles hover_white">Tecnologías Emergentes</h2>
+                          <p>Innovando para el futuro de Guatemala con las últimas tecnologías.</p>
+                      </div></a>
+                  </div>
+
+                  <div class="col-lg-4 my-4 text-center">
+                      <a href="/transformacion/infraestructura-pública-digital/index.html"><div class="cuadro_plataformas">
+                          <img src="/assets/img/iconos/TD-51.png">
+                          <h2 class="text-titles hover_white">Infraestructura Pública Digital</h2>
+                          <p>Construyendo las bases para un Gobierno Digital sólido y sostenible.</p>
+                      </div></a>
+                  </div>
+
+              </div>
+          </div>
+      </section>
+
+{% endblock %}

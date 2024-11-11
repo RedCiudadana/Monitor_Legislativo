@@ -1,0 +1,156 @@
+---
+permalink: "transformacion/index.html"
+---
+
+{% extends "src/base.njk" %}
+
+{% block head %}
+<title>Transformación Digital | Gobierno Digital</title>
+{% endblock %}
+
+{% block content %}
+
+        <!-- Slider
+		============================================= -->
+		<section id="slider" class="bg-color">
+			<div class="container">
+				<div class="row d-flex">
+					<div class="col-lg-6 col-md-12 col-sm-12 d-flex align-self-center flex-column pt-5 pb-0 py-lg-6 mb-0 my-lg-4">
+
+						<h2 class="text-slider mb-4" style="font-size:40px!important">Transformación Digital del Estado, mejores servicios para las personas</h2>
+						<h2 class="text-slider2">
+                            La transformación digital en Guatemala es un viaje hacia un gobierno más eficiente, 
+                            transparente, inclusivo y responsable. A través de dominios como el Gobierno Digital, 
+                            Datos Abiertos, Interoperabilidad, Accesibilidad e Inclusión Digital, Tecnologías 
+                            Emergentes e Infraestructura Pública Digital, estamos sentando las bases para un 
+                            futuro donde la tecnología y la innovación impulsan el desarrollo sostenible y mejoran 
+                            la calidad de vida de todos los guatemaltecos.
+						</h2>
+
+					</div>
+
+                    <div class="col-lg-6 col-md-12 col-sm-12 d-flex justify-content-end align-self-center flex-column pt-5 pb-0 py-lg-6 mb-0 my-lg-4">
+
+						<img src="/assets/img/slider/plangobierno.png">
+
+					</div>
+				</div>
+			</div>
+        </section>
+
+        <!-- Transformacion Digital
+        ============================================= -->
+
+        <!-- <section class="px-2" style="background-color: #e9f0f8;">
+            <div class="container clearfix ">
+                <div class="row py-6">
+                
+
+                    <div class="col-lg-4 my-4 text-center">
+                        <a href="/transformacion/index.html"><div class="cuadro_plataformas">
+                            <img src="/assets/img/iconos/TD-46.png">
+                            <h2 class="text-titles4">Gobierno Digital</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipis</p>
+                        </div></a>
+                    </div>
+
+                    <div class="col-lg-4 my-4 text-center">
+                        <a href="/transformacion/index.html"><div class="cuadro_plataformas">
+                            <img src="/assets/img/iconos/TD-47.png">
+                            <h2 class="text-titles4">Interoperabilidad</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipis</p>
+                        </div></a>
+                    </div>
+
+                    <div class="col-lg-4 my-4 text-center">
+                        <a href="/transformacion/index.html"><div class="cuadro_plataformas">
+                            <img src="/assets/img/iconos/TD-48.png">
+                            <h2 class="text-titles4">Datos Abiertos</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipis</p>
+                        </div></a>
+                    </div>
+
+                    <div class="col-lg-4 my-4 text-center">
+                        <a href="/transformacion/index.html"><div class="cuadro_plataformas">
+                            <img src="/assets/img/iconos/TD-49.png">
+                            <h2 class="text-titles4">Accesabilidad</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipis</p>
+                        </div></a>
+                    </div>
+
+                    <div class="col-lg-4 my-4 text-center">
+                        <a href="/transformacion/index.html"><div class="cuadro_plataformas">
+                            <img src="/assets/img/iconos/TD-50.png">
+                            <h2 class="text-titles4">Tecnologías Emergentes</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipis</p>
+                        </div></a>
+                    </div>
+
+                    <div class="col-lg-4 my-4 text-center">
+                        <a href="/transformacion/index.html"><div class="cuadro_plataformas">
+                            <img src="/assets/img/iconos/TD-51.png">
+                            <h2 class="text-titles4">Infraestructura Pública Digital</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipis</p>
+                        </div></a>
+                    </div>
+
+                </div>
+            </div>
+        </section> -->
+
+        <!-- Lecturas
+        ============================================= -->
+
+        <section class="px-2">
+            <div class="container clearfix ">
+                <div class="row py-6">
+                    
+                  <div class="col-lg-9">
+                    {% for trans in collections.transformacion%}
+                    <div class="py-4">
+                        
+                        <h2 class="text-titles3">{{trans.data.title}}</h2>
+                        <div class="overflow_5">
+                            {{trans.content | safe}}
+                        </div>
+                        <div class="centered-between">
+                            <p>{{trans.data.tiempo}}. de lectura</p>
+                            <a class="btn" href="{{trans.url}}">Leer Más <i class="fa-solid fa-right-long"></i></a>
+                        </div>
+                        <div class="linea-verde"></div>
+                    </div>
+                    {% endfor %}
+
+                  </div>
+
+                  <div class="col-lg-3">
+                    <div class="tabla_contenidos">
+                        <h2 class="text-titles3">Tabla de Contenidos</h2>
+                        <div class="linea-gris"></div>
+                        {% for trans in collections.transformacion%}
+                        <a class="tabla_contenidos_a" href="{{trans.url}}">
+                            {{trans.data.title}}
+                        </a>
+                        <div class="linea-gris"></div>
+                        {% endfor %}
+                        <!-- <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+                        </p>
+                        <div class="linea-gris"></div>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+                        </p>
+                        <div class="linea-gris"></div> -->
+                        <!-- <div class="d-flex">
+                            <a href="#"><img style="width: 30px;" src="/assets/img/iconos/REDES-34.png"></a>
+                            <a href="#"><img style="width: 30px;" src="/assets/img/iconos/REDES-35.png"></a>
+                            <a href="#"><img style="width: 30px;" src="/assets/img/iconos/REDES-36.png"></a>
+                        </div> -->
+                    </div>
+                  </div>
+
+                </div>
+            </div>
+        </section>
+
+{% endblock %}

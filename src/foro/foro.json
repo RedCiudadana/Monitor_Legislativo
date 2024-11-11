@@ -1,0 +1,5 @@
+{
+    "tags": "foro",
+    "permalink": "foro/{{ page.fileSlug }}/index.html",
+    "layout": "layouts/foro.njk"
+}

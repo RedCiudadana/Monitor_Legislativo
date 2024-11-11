@@ -1,0 +1,118 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# publish_mode: editorial_workflow
+media_folder: "assets/cms" # Media files will be stored in the repo under src/assets/images/posts
+public_folder: "/assets/cms" # The src attribute for uploaded media will begin with assets/images/posts
+
+collections:
+  - name: "transformacion" # Used in routes, e.g., /admin/collections/blog
+    label: "Transformación Digital" # Used in the UI
+    folder: "src/transformacion" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    editor:
+      preview: false # Disable the editor preview and use instead 'preview links'
+    fields: # The fields for each document, usually in front matter
+      - { name: "title", label: "Title" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { name: "description", label: "Description" }
+      - { name: "date", label: "Date", widget: "datetime" }
+      - { name: "tiempo", label: "Tiempo de Lectura" }
+      - { name: "body", label: "Body", widget: "markdown" }
+      - {
+          name: "highlight",
+          label: "Highlight",
+          widget: "boolean",
+          default: false,
+        }
+  - name: "foro" # Used in routes, e.g., /admin/collections/blog
+    label: "Foro Parlamentario" # Used in the UI
+    folder: "src/foro" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    editor:
+      preview: false # Disable the editor preview and use instead 'preview links'
+    fields: # The fields for each document, usually in front matter
+      - { name: "title", label: "Title" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { name: "description", label: "Description" }
+      - { name: "date", label: "Date", widget: "datetime" }
+      - { name: "tiempo", label: "Tiempo de Lectura" }
+      - { name: "body", label: "Body", widget: "markdown" }
+      - {
+          name: "highlight",
+          label: "Highlight",
+          widget: "boolean",
+          default: false,
+        }
+  - name: "iniciativas" # Used in routes, e.g., /admin/collections/blog
+    label: "Iniciativas" # Used in the UI
+    folder: "src/iniciativas" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    editor:
+      preview: false # Disable the editor preview and use instead 'preview links'
+    fields: # The fields for each document, usually in front matter
+      - { name: "title", label: "Title" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { name: "description", label: "Descripción" }
+      - { name: "date", label: "Date", widget: "datetime" }
+      - { name: "body", label: "Body", widget: "markdown" }
+      - {
+          name: "highlight",
+          label: "Highlight",
+          widget: "boolean",
+          default: false,
+        }
+  - name: "mediciones" # Used in routes, e.g., /admin/collections/blog
+    label: "Mediciones" # Used in the UI
+    folder: "src/mediciones" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    editor:
+      preview: false # Disable the editor preview and use instead 'preview links'
+    fields: # The fields for each document, usually in front matter
+      - { name: "title", label: "Nombre de Medición" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { name: "description", label: "Descripción" }
+      - { name: "grafica", label: "Gráfica" }
+      - {
+          name: "highlight",
+          label: "Highlight",
+          widget: "boolean",
+          default: false,
+        }
+  - name: "recursos" # Used in routes, e.g., /admin/collections/blog
+    label: "Recursos" # Used in the UI
+    folder: "src/recursos" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    editor:
+      preview: false # Disable the editor preview and use instead 'preview links'
+    fields: # The fields for each document, usually in front matter
+      - { name: "title", label: "Title" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { name: "description", label: "Description" }
+      - { name: "date", label: "Date", widget: "datetime" }
+      - { name: "recurso", label: "Recurso", widget: "file" }
+      - {
+          name: "highlight",
+          label: "Highlight",
+          widget: "boolean",
+          default: false,
+        }
+  - name: "videos" # Used in routes, e.g., /admin/collections/video
+    label: "Videos" # Used in the UI
+    folder: "src/videos" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    editor:
+      preview: false # Disable the editor preview and use instead 'preview links'
+    fields: # The fields for each document, usually in front matter
+      - { name: "title", label: "Title" }
+      - { name: "description", label: "Description" }
+      - { name: "link", label: "Enlace de video" }
+      - { name: "date", label: "Date", widget: "datetime" }
+show_preview_links: true
