@@ -1,5 +1,5 @@
 ---
-permalink: "congreso_datos/index.html"
+permalink: "analisis_legislativo/index.html"
 ---
 
 {% extends "src/base.njk" %}
@@ -17,7 +17,7 @@ permalink: "congreso_datos/index.html"
 				<div class="row d-flex">
 					<div class="col-lg-6 col-md-12 col-sm-12 d-flex align-self-center flex-column pt-5 pb-0 py-lg-6 mb-0 my-lg-4">
 
-						<h2 class="text-slider" style="font-size:40px!important">Congreso en Datos</h2>
+						<h2 class="text-slider" style="font-size:40px!important">Análisis Legislativo</h2>
 						<h2 class="text-slider2">
                             Bienvenido a la sección de Recursos de Red Ciudadana, tu centro de aprendizaje y herramientas para la transformación digital
 						</h2>
@@ -44,16 +44,6 @@ permalink: "congreso_datos/index.html"
                     </div>
                     <div class="col-lg-9">
                         <div class="row">
-                            {% for diputado in collections.diputado %}
-                                <div class="col-lg-3 my-2">
-                                    <div class="cuadro_diputado">
-                                        <a href="{{diputado.url}}">
-                                            <img src="{{diputado.data.diputado['ImagenGithub']}}" loading="lazy">
-                                            <h1>{{diputado.data.diputado['Nombre']}}</h1>
-                                        </a>
-                                    </div>
-                                </div>
-                            {% endfor %}
                         </div>
                     </div>
 

@@ -19892,3 +19892,21 @@ label.checkbox {
 .cuadro_recurso div p{
   margin-bottom: 10px;
 }
+
+.cuadro_diputado{
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  transition: 0.5s all ease;
+  height: 100%;
+  text-align: center;
+}
+
+.cuadro_diputado img{
+  width: 100%;
+  height: 150px;
+}
+
+.cuadro_diputado h1{
+  padding: 20px;
+
+}
