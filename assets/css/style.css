@@ -19910,3 +19910,18 @@ label.checkbox {
   padding: 20px;
 
 }
+
+.breadcrumb_v2{
+  font-size: 15px;
+  display: flex;
+}
+
+.breadcrumb_v2 a, .breadcrumb_v2 p{
+  color: #3d3d3d;
+  transition: 0.5s all ease;
+  margin-right: 5px;
+}
+
+.breadcrumb_v2 a:hover{
+  color: #000;
+}
