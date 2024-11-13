@@ -79,7 +79,6 @@ module.exports = function (eleventyConfig) {
         // Verificar si el archivo coincide con 'sesion_*.js'
         if (file.startsWith('sesion_') && file.endsWith('.js')) {
             const sessionPath = path.resolve(__dirname, preguntasDataDir, file);
-            console.log(`Procesando archivo de sesión: ${sessionPath}`);
             try {
                 const sessionData = require(sessionPath)(); // Asumiendo que el módulo exporta una función que devuelve los datos
 
@@ -167,8 +166,6 @@ module.exports = function (eleventyConfig) {
                 preguntas.push(pregunta);
             });
         });
-    
-        console.log(`Total de preguntas: ${preguntas.length}`);
     
         return preguntas;
     });

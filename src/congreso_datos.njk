@@ -10,55 +10,92 @@ permalink: "congreso_datos/index.html"
 
 {% block content %}
 
-        <!-- Slider
-		============================================= -->
-		<section id="slider" class="bg-color">
-			<div class="container">
-				<div class="row d-flex">
-					<div class="col-lg-6 col-md-12 col-sm-12 d-flex align-self-center flex-column pt-5 pb-0 py-lg-6 mb-0 my-lg-4">
+<!-- Slider ============================================= -->
+<section id="slider" class="bg-color">
+    <div class="container">
+        <div class="row d-flex">
+            <div class="col-lg-6 col-md-12 col-sm-12 d-flex align-self-center flex-column pt-5 pb-0 py-lg-6 mb-0 my-lg-4">
+                <h2 class="text-slider" style="font-size:40px!important">Congreso en Datos</h2>
+                <h2 class="text-slider2">
+                    Bienvenido a la sección de Recursos de Red Ciudadana, tu centro de aprendizaje y herramientas para la transformación digital
+                </h2>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 d-flex justify-content-end align-self-center flex-column pt-5 pb-0 py-lg-6 mb-0 my-lg-4">
+                <img src="/assets/img/slider/recursos.png">
+            </div>
+        </div>
+    </div>
+</section>
 
-						<h2 class="text-slider" style="font-size:40px!important">Congreso en Datos</h2>
-						<h2 class="text-slider2">
-                            Bienvenido a la sección de Recursos de Red Ciudadana, tu centro de aprendizaje y herramientas para la transformación digital
-						</h2>
-
-					</div>
-
-                    <div class="col-lg-6 col-md-12 col-sm-12 d-flex justify-content-end align-self-center flex-column pt-5 pb-0 py-lg-6 mb-0 my-lg-4">
-
-						<img src="/assets/img/slider/recursos.png">
-
-					</div>
-				</div>
-			</div>
-        </section>
-
-        <!-- Iniciativas
-        ============================================= -->
-
-        <section class="px-2">
-            <div class="container clearfix ">
-                <div class="row py-6">
-                    <div class="col-lg-3">
-                        
+<!-- Iniciativas ============================================= -->
+<section class="px-2">
+    <div class="container clearfix">
+        <div class="row py-6">
+            <!-- Columna para el campo de búsqueda -->
+            <div class="col-lg-3 mb-4">
+                
+            </div>
+            <!-- Contenedor de cuadros de diputados -->
+            <div class="col-lg-9">
+                <div class="row">
+                    <div class="col-lg-12 mb-4">
+                        <input type="text" id="buscadorDiputados" placeholder="Buscar diputado..." class="form-control">
+                        <button type="button" id="clearSearch" class="btn btn-light position-absolute x_button">✕</button>
                     </div>
-                    <div class="col-lg-9">
-                        <div class="row">
-                            {% for diputado in collections.diputado %}
-                                <div class="col-lg-3 my-2">
-                                    <div class="cuadro_diputado">
-                                        <a href="{{diputado.url}}">
-                                            <img src="{{diputado.data.diputado['ImagenGithub']}}" loading="lazy">
-                                            <h1>{{diputado.data.diputado['Nombre']}}</h1>
-                                        </a>
-                                    </div>
-                                </div>
-                            {% endfor %}
+                </div>
+                <div class="row" id="listaDiputados">
+                    {% for diputado in collections.diputado %}
+                        <div class="col-lg-3 my-2 cuadro-diputado">
+                            <div class="cuadro_diputado">
+                                <a href="{{diputado.url}}">
+                                    <img src="{{diputado.data.diputado['ImagenGithub']}}" loading="lazy">
+                                    <h1 class="nombre-diputado">{{diputado.data.diputado['Nombre']}}</h1>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-
+                    {% endfor %}
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
+{% endblock %}
+
+{% block body_javascripts %}
+<script>
+    const searchInput = document.getElementById('buscadorDiputados');
+    const clearButton = document.getElementById('clearSearch');
+
+    // Mostrar o esconder el botón de borrado según el input
+    searchInput.addEventListener('input', function() {
+        const searchValue = this.value.toLowerCase().trim();
+        const cuadrosDiputados = document.querySelectorAll('.cuadro-diputado');
+
+        // Mostrar el botón de borrado si hay texto
+        clearButton.style.display = searchValue ? 'inline' : 'none';
+
+        cuadrosDiputados.forEach(cuadro => {
+            const nombreDiputado = cuadro.querySelector('.nombre-diputado').textContent.toLowerCase();
+            if (searchValue && nombreDiputado.includes(searchValue)) {
+                cuadro.style.display = 'block'; // Mostrar coincidencias
+            } else if (searchValue === "") {
+                cuadro.style.display = 'block'; // Mostrar todos si el input está vacío
+            } else {
+                cuadro.style.display = 'none'; // Ocultar los no coincidentes
+            }
+        });
+    });
+
+    // Borrar el contenido del input cuando se haga clic en la "X"
+    clearButton.addEventListener('click', function() {
+        searchInput.value = '';
+        clearButton.style.display = 'none';
+        
+        // Mostrar todos los cuadros de diputados
+        document.querySelectorAll('.cuadro-diputado').forEach(cuadro => {
+            cuadro.style.display = 'block';
+        });
+    });
+</script>
 {% endblock %}

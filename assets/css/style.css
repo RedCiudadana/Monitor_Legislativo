@@ -19925,3 +19925,12 @@ label.checkbox {
 .breadcrumb_v2 a:hover{
   color: #000;
 }
+
+.x_button{
+  right: 12px; 
+  top: 7%; 
+  transform: translateY(-50%); 
+  display: none;
+  padding-block: 7px;
+  cursor: pointer;
+}
