@@ -89,29 +89,28 @@
 ---------------------------------------------------------------- */
 
 @font-face {
-  font-family: "Metropolis-Bold";
+  font-family: "Asap-Bold";
 
-  src: url("/assets/fonts/Metropolis-Bold.otf");
+  src: url("/assets/fonts/Asap-Bold.otf");
 }
 
 @font-face {
-  font-family: "Metropolis-Medium";
+  font-family: "Asap-BoldItalic";
 
-  src: url("/assets/fonts/Metropolis-Medium.otf");
+  src: url("/assets/fonts/Asap-BoldItalic.otf");
 }
 
 @font-face {
-  font-family: "Metropolis-Regular";
+  font-family: "Asap-Medium";
 
-  src: url("/assets/fonts/Metropolis-Regular.otf");
+  src: url("/assets/fonts/Asap-Medium.otf");
 }
 
 @font-face {
-  font-family: "Metropolis-SemiBold";
+  font-family: "Asap-Regular";
 
-  src: url("/assets/fonts/Metropolis-SemiBold.otf");
+  src: url("/assets/fonts/Asap-Regular.otf");
 }
-
 
 /* ----------------------------------------------------------------
 	Bootstrap Adjustments
@@ -167,7 +166,7 @@ span{
   color: #03ac8a;
   font-size: 20px;
   font-weight: 800;
-  font-family: 'Metropolis-Bold', sans-serif;
+  font-family: 'Asap-Bold', sans-serif;
 }
 
 .clear {
@@ -210,7 +209,7 @@ span{
 body {
   line-height: 1.5;
   color: #02324f;
-  font-family: "Metropolis-Medium", sans-serif !important;
+  font-family: "Asap-Medium", sans-serif !important;
 }
 
 a {
@@ -254,7 +253,7 @@ h6 {
   font-weight: 600;
   line-height: 1.5;
   margin: 0 0 30px 0;
-  font-family: "Metropolis-Bold", sans-serif !important;
+  font-family: "Asap-Bold", sans-serif !important;
 }
 
 h5,
@@ -323,7 +322,7 @@ h6 > span:not(.nocolor):not(.badge) {
 }
 
 a, p{
-  font-family: "Metropolis-Medium", sans-serif;;
+  font-family: "Asap-Medium", sans-serif;;
 }
 
 p,
@@ -341,7 +340,7 @@ form {
 }
 
 small {
-  font-family: "Metropolis-Regular", sans-serif;
+  font-family: "Asap-Regular", sans-serif;
 }
 
 @media (max-width: 1200px) {
@@ -518,9 +517,8 @@ span.middot {
   float: none !important;
 }
 
-.bg-color,
-.bg-color #header-wrap {
-  background-color: #f0f7fc !important;
+.bg-color{
+  background-image: url('/assets/img/monitor/03_SLIDER/BANNER.png');
 }
 
 .bg-image{
@@ -572,15 +570,15 @@ span.middot {
 }
 
 .font-body {
-  font-family: "Metropolis-Regular", sans-serif;
+  font-family: "Asap-Regular", sans-serif;
 }
 
 .font-primary {
-  font-family: "Metropolis-Regular", sans-serif;
+  font-family: "Asap-Regular", sans-serif;
 }
 
 .font-secondary {
-  font-family: "Metropolis-Regular", serif;
+  font-family: "Asap-Regular", serif;
 }
 
 .fw-extralight {
@@ -3709,7 +3707,7 @@ html[xmlns] .slider-wrap {
 
 #logo a {
   color: #000;
-  font-family: "Metropolis-Regular", sans-serif;
+  font-family: "Asap-Regular", sans-serif;
   font-size: 36px;
 }
 
@@ -3930,7 +3928,7 @@ body:not(.top-search-open) .top-search-parent #primary-menu-trigger {
   font-weight: 700;
   font-size: 0.8125rem;
   letter-spacing: 1px;
-  font-family: "Metropolis-Regular", sans-serif;
+  font-family: "Asap-Regular", sans-serif;
   transition: 0.5s;
 }
 
@@ -3954,7 +3952,7 @@ body:not(.top-search-open) .top-search-parent #primary-menu-trigger {
 }
 
 .menu-link div:hover{
-  color: #03ac8a;
+  color: #19417D;
 }
 
 .menu-item.sub-menu > .menu-link > div {
@@ -3980,7 +3978,7 @@ body:not(.top-search-open) .top-search-parent #primary-menu-trigger {
   font-weight: 400;
   color: #666;
   letter-spacing: 0;
-  font-family: "Metropolis-Regular", sans-serif;
+  font-family: "Asap-Regular", sans-serif;
 }
 
 .sub-menu-container .menu-item:hover > .menu-link {
@@ -4457,7 +4455,7 @@ body:not(.top-search-open) .top-search-parent #primary-menu-trigger {
   .mega-menu-style-2 .mega-menu-title > .menu-link {
     font-size: 0.8125rem;
     font-weight: 700;
-    font-family: "Metropolis", sans-serif;
+    font-family: "Asap", sans-serif;
     letter-spacing: 1px;
     text-transform: uppercase !important;
     margin-bottom: 15px;
@@ -5247,7 +5245,7 @@ body:not(.top-search-open) .top-search-parent #primary-menu-trigger {
   color: #333;
   font-weight: 700;
   margin-top: 0 !important;
-  font-family: "Metropolis", sans-serif;
+  font-family: "Asap", sans-serif;
   letter-spacing: 2px;
 }
 
@@ -6042,7 +6040,7 @@ body:not(.top-search-open)
 
 .text-slider{
   color: #02324f!important;
-  font-family: 'Metropolis-Bold', sans-serif!important;
+  font-family: 'Asap-Bold', sans-serif!important;
   font-size: 30px!important;
   line-height: 35px;
   font-weight: 600;
@@ -6050,7 +6048,7 @@ body:not(.top-search-open)
 
 .text-slider2{
   color: #02324f!important;
-  font-family: 'Metropolis-Regular', sans-serif!important;
+  font-family: 'Asap-Regular', sans-serif!important;
   font-size: 20px!important;
   line-height: 25px;
   font-weight: 500;
@@ -6060,7 +6058,7 @@ body:not(.top-search-open)
 
 .text-slider3{
   color: #000!important;
-  font-family: 'Metropolis-Regular', sans-serif!important;
+  font-family: 'Asap-Regular', sans-serif!important;
   font-size: 17px!important;
   line-height: 25px;
   font-weight: 500;
@@ -6072,7 +6070,7 @@ body:not(.top-search-open)
   background: #000;
   padding: 5px 15px;
   color: #F1D61B;
-  font-family: 'Metropolis-Regular', sans-serif!important;
+  font-family: 'Asap-Regular', sans-serif!important;
   font-size: 15px!important;
   line-height: 20px;
   font-weight: 500;
@@ -6080,7 +6078,7 @@ body:not(.top-search-open)
 
 .text-titles{
   color: #03324e!important;
-  font-family: 'Metropolis-Bold', sans-serif!important;
+  font-family: 'Asap-Bold', sans-serif!important;
   font-size: 28px!important;
   line-height: 30px;
   font-weight: 900!important;
@@ -6088,7 +6086,7 @@ body:not(.top-search-open)
 
 .text-titles2{
   color: #fff!important;
-  font-family: 'Metropolis-Bold', sans-serif!important;
+  font-family: 'Asap-Bold', sans-serif!important;
   font-size: 20px!important;
   line-height: 35px;
   font-weight: 600!important;
@@ -6098,7 +6096,7 @@ body:not(.top-search-open)
 
 .text-titles3{
   color: #02324f!important;
-  font-family: 'Metropolis-Bold', sans-serif!important;
+  font-family: 'Asap-Bold', sans-serif!important;
   font-size: 20px!important;
   line-height: 35px;
   font-weight: 800!important;
@@ -6107,7 +6105,7 @@ body:not(.top-search-open)
 
 .text-titles4{
   color: #02324f!important;
-  font-family: 'Metropolis-Regular', sans-serif!important;
+  font-family: 'Asap-Regular', sans-serif!important;
   font-size: 18px!important;
   line-height: 35px;
   font-weight: 600!important;
@@ -6119,7 +6117,7 @@ body:not(.top-search-open)
   position: relative;
   width: 100%;
   overflow: hidden;
-  background-image: url('/assets/img/slider/slider-final.png');
+  background-image: url('/assets/img/monitor/03_SLIDER/SLIDER.png');
   background-size:cover;
 }
 
@@ -6129,7 +6127,7 @@ body:not(.top-search-open)
 
 @media (max-width:400px){
   .slider-element {
-    background-image: url('/assets/img/slider/slider-home-movil.png');
+    background-image: url('/assets/img/monitor/03_SLIDER/SLIDER.png');
     background-size: 100%;
     background-repeat: no-repeat;
   }
@@ -8332,7 +8330,7 @@ body:not(.device-touch) .portfolio {
   padding: 30px 0;
   text-align: center;
   color: #444;
-  font-family: "Metropolis", sans-serif;
+  font-family: "Asap", sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 1.5rem;
@@ -8511,7 +8509,7 @@ body:not(.device-touch) .entry-link {
   font-weight: bold;
   letter-spacing: 1px;
   text-transform: uppercase;
-  font-family: "Metropolis", sans-serif;
+  font-family: "Asap", sans-serif;
 }
 
 @media (min-width: 992px) {
@@ -9685,7 +9683,7 @@ body:not(.device-touch) .button {
   font-size: 1.25rem;
   height: auto;
   line-height: 1;
-  font-family: "Metropolis", sans-serif;
+  font-family: "Asap", sans-serif;
 }
 
 .button.button-desc span {
@@ -10521,7 +10519,7 @@ body:not(.device-touch) .button.button-full strong {
 .fbox-content h3 {
   font-size: 1rem;
   font-weight: 600;
-  font-family: "Metropolis", sans-serif;
+  font-family: "Asap", sans-serif;
   text-transform: uppercase;
   margin-bottom: 0;
   color: #333;
@@ -12615,7 +12613,7 @@ body:not(.device-touch) .social-icon i {
 .tab-nav-lg li a {
   display: inline-block;
   color: #444;
-  font-family: "Metropolis", sans-serif;
+  font-family: "Asap", sans-serif;
   font-size: 13px;
   font-weight: bold;
   text-transform: uppercase;
@@ -13571,7 +13569,7 @@ body:not(.device-touch) .clients-grid .grid-item a {
 .counter {
   font-size: 42px;
   font-weight: 600;
-  font-family: "Metropolis", sans-serif;
+  font-family: "Asap", sans-serif;
 }
 
 .counter.counter-small {
@@ -14816,7 +14814,7 @@ label {
   display: inline-block;
   font-size: 13px;
   font-weight: 700;
-  font-family: "Metropolis", sans-serif;
+  font-family: "Asap", sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: #555;
@@ -16224,7 +16222,7 @@ body:not(.device-touch) .tagcloud a {
 .widget-filter-links li a {
   display: block;
   color: #444;
-  font-family: "Metropolis", sans-serif;
+  font-family: "Asap", sans-serif;
   font-weight: 500;
 }
 
@@ -16286,7 +16284,7 @@ body:not(.device-touch) .tagcloud a {
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 2px;
-  font-family: "Metropolis", sans-serif;
+  font-family: "Asap", sans-serif;
 }
 
 .nav-tree li i {
@@ -16354,7 +16352,7 @@ body:not(.device-touch) .tagcloud a {
   line-height: 1;
   font-size: 80px;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
-  font-family: "Metropolis", sans-serif;
+  font-family: "Asap", sans-serif;
 }
 
 .wedding-head .first-name,
@@ -18703,14 +18701,14 @@ label.checkbox {
 
 .podcast-title{
   color: #fff;
-  font-family: 'Metropolis-Bold', sans-serif!important;
+  font-family: 'Asap-Bold', sans-serif!important;
   font-size: 40px;
   font-weight: 700!important;
 }
 
 .podcast-description{
   color: #fff;
-  font-family: 'Metropolis-SemiBold', sans-serif!important;
+  font-family: 'Asap-SemiBold', sans-serif!important;
   font-size: 20px;
   font-weight: 300!important;
 }
@@ -19484,7 +19482,7 @@ label.checkbox {
   cursor: pointer;
   padding: 10px;
   color: #000!important;
-  font-family: 'Metropolis-Bold', sans-serif!important;
+  font-family: 'Asap-Bold', sans-serif!important;
   font-size: 17px!important;
   font-weight: 900!important;
   text-align: center;
@@ -19599,7 +19597,7 @@ label.checkbox {
 .linea-verde{
   height: 5px;
   width: 100%;
-  border-bottom: 1px solid #03ac8a;
+  border-bottom: 1px solid #19417D;
   margin-bottom: 20px;
 }
 
@@ -19882,6 +19880,11 @@ label.checkbox {
 .cuadro_recurso{
   background-color: #fff;
   display: block;
+  height: 100%;
+}
+
+.cuadro_recurso div{
+  margin-bottom: 50px;
 }
 
 .cuadro_recurso div h1{
@@ -19891,6 +19894,16 @@ label.checkbox {
 
 .cuadro_recurso div p{
   margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cuadro_recurso div a{
+  position: absolute;
+  bottom: 10px;
 }
 
 .cuadro_diputado{
