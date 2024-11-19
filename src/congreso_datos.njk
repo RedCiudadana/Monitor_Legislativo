@@ -6,6 +6,8 @@ permalink: "congreso_datos/index.html"
 
 {% block head %}
 <title>Congreso en Datos | Monitor Legislativo</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 {% endblock %}
 
 {% block content %}
@@ -25,14 +27,27 @@ permalink: "congreso_datos/index.html"
         </div>
     </div>
 </section> -->
-
-<!-- Iniciativas ============================================= -->
+<!-- Cuadros ============================================= -->
 <section class="px-2">
     <div class="container clearfix">
         <div class="row py-6">
             <!-- Columna para el campo de búsqueda -->
-            <div class="col-lg-3 mb-4">
+            <div class="col-lg-3 mb-4"
+            style="
+                position: sticky;
+                top: 90px; 
+                height: 100%; 
+                overflow-y: auto; 
+                background-color: #f8f9fa; 
+                z-index: 10;
+                padding: 10px; 
+            "
+            >
+                <h1>Agrupar por Bloque</h1>
                 
+                <div id="bloquesFiltro" class="d-flex flex-wrap my-3">
+                    <!-- Bloque buttons will be dynamically added here -->
+                </div>
             </div>
             <!-- Contenedor de cuadros de diputados -->
             <div class="col-lg-9">
@@ -49,6 +64,7 @@ permalink: "congreso_datos/index.html"
                                 <a href="{{diputado.url}}">
                                     <img src="{{diputado.data.diputado['ImagenGithub']}}" loading="lazy">
                                     <h1 class="nombre-diputado">{{diputado.data.diputado['Nombre']}}</h1>
+                                    <h6 class="bloque-diputado">{{diputado.data.diputado['Bloque al que representa']}}</h6>
                                 </a>
                             </div>
                         </div>
@@ -97,4 +113,66 @@ permalink: "congreso_datos/index.html"
         });
     });
 </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const cuadrosDiputados = document.querySelectorAll(".cuadro-diputado");
+        const bloqueCounts = {};
+    
+        // Contar las ocurrencias de cada bloque
+        cuadrosDiputados.forEach(cuadro => {
+            const bloque = cuadro.querySelector('.bloque-diputado').textContent.trim();
+            if (bloque) {
+                bloqueCounts[bloque] = (bloqueCounts[bloque] || 0) + 1;
+            }
+        });
+    
+        // Crear los botones de bloques con conteo
+        const bloquesFiltroContainer = document.getElementById("bloquesFiltro");
+        Object.keys(bloqueCounts).forEach(bloque => {
+            const bloqueContainer = document.createElement("div");
+            bloqueContainer.classList.add("bloque-container");
+    
+            // Crear un enlace para el bloque con el conteo
+            const boton = document.createElement("a");
+            boton.textContent = `${bloque} (${bloqueCounts[bloque]})`;
+            boton.classList.add("bloque-boton");
+            boton.addEventListener("click", () => filterDiputadosByBloque(bloque));
+    
+            // Agregar el enlace al contenedor de bloque
+            bloqueContainer.appendChild(boton);
+
+            // Agregar una línea debajo del bloque
+            const hr = document.createElement("hr");
+            bloqueContainer.appendChild(hr);
+    
+            // Añadir el contenedor al filtro de bloques
+            bloquesFiltroContainer.appendChild(bloqueContainer);
+        });
+    
+        // Botón para mostrar todos los diputados
+        const botonMostrarTodos = document.createElement("a");
+        botonMostrarTodos.textContent = "Mostrar Todos";
+        botonMostrarTodos.classList.add("btn", "btn-light", "mx-2");
+        botonMostrarTodos.addEventListener("click", () => {
+            cuadrosDiputados.forEach(cuadro => {
+                cuadro.style.display = 'block';
+            });
+        });
+        bloquesFiltroContainer.appendChild(botonMostrarTodos);
+    
+        // Función para filtrar por bloque
+        function filterDiputadosByBloque(bloque) {
+            cuadrosDiputados.forEach(cuadro => {
+                const partido = cuadro.querySelector('.bloque-diputado').textContent.trim();
+                if (partido === bloque) {
+                    cuadro.style.display = 'block';
+                } else {
+                    cuadro.style.display = 'none';
+                }
+            });
+        }
+    });
+</script>
+    
 {% endblock %}
