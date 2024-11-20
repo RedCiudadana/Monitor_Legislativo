@@ -19942,6 +19942,7 @@ label.checkbox {
 
 .breadcrumb_v2 a:hover{
   color: #000;
+  text-decoration: underline!important;
 }
 
 .x_button{
@@ -19994,4 +19995,21 @@ label.checkbox {
   border-top: 1px solid #ccc;
   margin: 5px 0;
   width: 100%;
+}
+
+.cuadro_perfil_diputado{
+  box-shadow: 5px 5px 5px #ccc;
+  background-color: #f0f7fc;
+}
+
+.cuadro_perfil_diputado .info_personal{
+  padding: 20px 50px;
+}
+
+.cuadro_perfil_diputado .info_personal h1{
+  font-size: 30px;
+}
+
+.cuadro_perfil_diputado .info_personal h2{
+  font-size: 20px;
 }
