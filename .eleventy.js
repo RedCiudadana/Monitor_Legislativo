@@ -35,11 +35,42 @@ module.exports = function (eleventyConfig) {
         return moment(date).format(format);
     });
 
+    eleventyConfig.addFilter("log", function (value) {
+        console.log(value);
+        return value; // Devuelve el valor original para no alterar la salida
+    });
+
     eleventyConfig.addFilter('findPreguntaPage', function(preguntaId, preguntaPages) {
         return preguntaPages.find(function(page) {
             return page.data.pregunta.id === preguntaId;
         });
-    });    
+    });      
+
+    eleventyConfig.addFilter("filterByDiputado", function (preguntas, diputadoNombre) {
+        if (!diputadoNombre) return preguntas;
+        return preguntas.filter(pregunta => {
+            return pregunta.votos.some(voto =>
+                voto.nombreDiputado.toLowerCase().includes(diputadoNombre.toLowerCase())
+            );
+        });
+    });
+    
+    eleventyConfig.addFilter("filterByPreguntaName", function (preguntas, preguntaNombre) {
+        if (!preguntaNombre) return preguntas;
+        return preguntas.filter(pregunta => 
+          pregunta['Nombre de Pregunta'].toLowerCase().includes(preguntaNombre.toLowerCase())
+        );
+    });
+
+    eleventyConfig.addFilter("filterVotosByDiputado", function (votos, nombreDiputado) {
+        if (!nombreDiputado || !votos) return [];
+        return votos.filter(voto => voto.nombreDiputado === nombreDiputado);
+    });
+
+    eleventyConfig.addFilter("findPreguntaByName", function (preguntas, nombrePregunta) {
+        if (!preguntas || !nombrePregunta) return [];
+        return preguntas.filter(preg => preg.data.pregunta['Nombre de Pregunta'] === nombrePregunta);
+    });
 
     eleventyConfig.addNunjucksFilter('findClosestDiputado', function(nombreDiputado, diputados) {
         let minDistance = Infinity;
@@ -169,5 +200,6 @@ module.exports = function (eleventyConfig) {
     
         return preguntas;
     });
+
 
 }

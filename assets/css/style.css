@@ -218,7 +218,7 @@ a {
 }
 
 a:hover {
-  color: #03ac8a;
+  color: #19417D;
 }
 
 a img {
@@ -20012,4 +20012,12 @@ label.checkbox {
 
 .cuadro_perfil_diputado .info_personal h2{
   font-size: 20px;
+}
+
+.preguntas_relevantes{
+  padding: 20px 50px;
+}
+
+.pregunta{
+  margin-bottom: 10px;
 }

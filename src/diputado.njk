@@ -11,6 +11,9 @@ tags:
 {% extends "src/base.njk" %}
 
 {% block head %}
+<title>
+	{{diputado['Nombre']}} | Monitor Legislativo
+</title>
 {% endblock %}
 
 {% block content %}
@@ -24,7 +27,7 @@ tags:
 					<a href="#" style="pointer-events: none;"> {{ diputado['Nombre'] }} </a>
 				</span>
 			</div>
-			<div class="col-lg-12">
+			<div class="col-lg-12 my-4">
 				<div class="cuadro_perfil_diputado">
 					<div class="row">
 						<div class="col-lg-4">
@@ -40,6 +43,65 @@ tags:
 								<p class="mb-1"><b>E-mail:</b> {{ diputado['E-mail:'] }}</p>
 								<p class="mb-1"><b>Teléfono de la oficina:</b> {{ diputado['Teléfono de la oficina:'] }}</p>
 								<p class="mb-1"><b>Dirección de la oficina:</b> {{ diputado['Dirección de la oficina:'] }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-12 my-4">
+				<div class="cuadro_perfil_diputado">
+					{% set filteredPreguntas = collections.preguntas | filterByDiputado(diputado['Nombre']) %}
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="preguntas_relevantes">
+								<h1 class="mb-4">Preguntas relevantes donde este representante ha votado:</h1>
+
+								{% set filteredPregunta1 = filteredPreguntas | filterByPreguntaName('APROBACIÓN DE LA REDACCIÓN FINAL DEL PROYECTO DE DECRETO QUE DISPONE APROBAR LA INICIATIVA DE LEY 6388') %}
+								{% for pregunta in filteredPregunta1 %}
+								<div class="pregunta">
+									<h3>{{ pregunta.sesion.nombreSesion }} -- {{ pregunta.sesion.fechaFormateada }}</h3>
+									
+									{% set matchingPreguntas = collections.pregunta | findPreguntaByName(pregunta['Nombre de Pregunta']) %}
+
+									{% for preg in matchingPreguntas %}
+									<a href="{{ preg.url }}">
+										<p>{{ preg.data.pregunta['Nombre de Pregunta'] }}</p>
+									</a>
+									{% endfor %}
+
+									{% set votosDiputado = pregunta.votos | filterVotosByDiputado(diputado['Nombre']) %}
+
+									{% if votosDiputado.length > 0 %}
+									<p><strong>Voto del Diputado:</strong> {{ votosDiputado[0].votoEmitido }}</p>
+									{% else %}
+									<p>Este diputado no emitió un voto en esta pregunta.</p>
+									{% endif %}
+								</div>
+								{% endfor %}
+
+								{% set filteredPregunta2 = filteredPreguntas | filterByPreguntaName('APROBACIÓN DE LA REDACCIÓN FINAL DEL PROYECTO DE DECRETO QUE DISPONE APROBAR LA INICIATIVA DE LEY 5545') %}
+								{% for pregunta in filteredPregunta2 %}
+								<div class="pregunta">
+									<h3>{{ pregunta.sesion.nombreSesion }} -- {{ pregunta.sesion.fechaFormateada }}</h3>
+									
+									{% set matchingPreguntas = collections.pregunta | findPreguntaByName(pregunta['Nombre de Pregunta']) %}
+
+									{% for preg in matchingPreguntas %}
+									<a href="{{ preg.url }}">
+										<p>{{ preg.data.pregunta['Nombre de Pregunta'] }}</p>
+									</a>
+									{% endfor %}
+
+									{% set votosDiputado = pregunta.votos | filterVotosByDiputado(diputado['Nombre']) %}
+
+									{% if votosDiputado.length > 0 %}
+									<p><strong>Voto del Diputado:</strong> {{ votosDiputado[0].votoEmitido }}</p>
+									{% else %}
+									<p>Este diputado no emitió un voto en esta pregunta.</p>
+									{% endif %}
+								</div>
+								{% endfor %}
 							</div>
 						</div>
 					</div>
