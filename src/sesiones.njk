@@ -17,16 +17,19 @@ tags:
 
 {% block content %}
 
+
+<!-- Slider
+============================================= -->
 <section id="slider" class="bg-color">
     <div class="container">
-        <div class="row d-flex">
-            <div class="col-lg-12 col-md-12 col-sm-12 d-flex align-self-center flex-column pt-5 pb-0 py-lg-6 mb-0 my-lg-4">
-                <h2 class="text-slider2" style="color: #fff!important;">
+        <div class="row d-flex py-2 justify-content-center">
+            <div class="col-lg-8 col-md-8 col-sm-12 d-flex align-self-center flex-column text-center py-6">
+                <img src="/assets/img/monitor/01_ICONOS/ML-12.png" style="width: 150px; height: auto;" class="m-auto mb-2">
+                <h2 class="mb-2 text-white" style="font-size:40px!important">{{ sesion.nombreSesion }}</h2>
+                <p class="text-white" style="font-size:20px!important; font-weight: 400;">
                     {{ sesion.fechaSesionFormateada }}
-                </h2>
-                <h2 class="text-slider" style="color: #fff!important;">
-                    {{ sesion.nombreSesion }}
-                </h2>
+                </p>
+
             </div>
         </div>
     </div>
@@ -44,25 +47,50 @@ tags:
             </div>
             <div class="col-lg-12 my-4">
                 <div class="row">
-                    {% for pregunta in sesion.preguntas %}
-                        <div class="col-lg-2">
-                            <h3>Pregunta {{ pregunta['Número de Pregunta'] }}</h3>
+                    <div class="col-lg-12">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead class="bg-primary text-white">
+                                    <tr>
+                                        <th>
+                                            <div class="d-flex justify-content-center align-items-center">
+                                                <p>Número de Pregunta</p>
+                                            </div>
+                                        </th>
+                                        <th >
+                                            <div class="d-flex justify-content-center align-items-center">
+                                                <p>Nombre de Pregunta</p>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="d-flex justify-content-center align-items-center">
+                                                <img src="/assets/img/monitor/01_ICONOS/01.png">
+                                                <p>Votaciones</p>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for pregunta in sesion.preguntas %}
+                                    <tr>
+                                        <td class="text-center align-middle" data-label="No. de Pregunta">Pregunta {{ pregunta['Número de Pregunta'] }}</td>
+                                        <td class="text-center align-middle limitid-width" data-label="Nombre de la Pregunta">{{ pregunta['Nombre de Pregunta'] }}</td>
+                                        <td class="text-center align-middle" data-label="Votaciones">
+                                            {% set preguntaPage = pregunta.id | findPreguntaPage(collections.pregunta) %}
+                                            {% if preguntaPage %}
+                                                <a class="btn" href="{{ preguntaPage.url }}">Ver Votaciones</a>
+                                            {% else %}
+                                                <!-- Manejar el caso donde no se encontró la página de la pregunta -->
+                                                <p>Página no encontrada</p>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
                         </div>
-
-                        <div class="col-lg-6">
-                            <p>{{ pregunta['Nombre de Pregunta'] }}</p>
-                        </div>
-    
-                        <div class="col-lg-4">
-                            {% set preguntaPage = pregunta.id | findPreguntaPage(collections.pregunta) %}
-                            {% if preguntaPage %}
-                                <a class="btn" href="{{ preguntaPage.url }}">Ver Votaciones</a>
-                            {% else %}
-                                <!-- Manejar el caso donde no se encontró la página de la pregunta -->
-                                <p>Página no encontrada</p>
-                            {% endif %}
-                        </div>
-                    {% endfor %}
+                    </div>
+                    
                 </div>
             </div>
         </div>

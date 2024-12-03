@@ -58,22 +58,42 @@ tags:
                     </div>
                     <div class="col-lg-12 my-4">
 
-                        <div class="row my-4">
-                            <div class="col-lg-4"><h2>Diputado</h2></div>
-                            <div class="col-lg-4"><h2>Bloque al que Representa</h2></div>
-                            <div class="col-lg-4"><h2>Voto</h2></div>
-                        </div>
-
-                        <div class="row">
-                            {% for voto in pregunta.votos %}
-                                {% set diputado = voto.nombreDiputado | findClosestDiputado(collections.diputado) %}
-                                {% if diputado %}
-                                    <div class="col-lg-4"><p><a href="{{ diputado.url }}">{{ diputado.data.diputado['Nombre'] }}</a></p></div>
-                                    <div class="col-lg-4"><p>{{ diputado.data.diputado['Bloque al que representa'] }}</p></div>
-                                    <div class="col-lg-4"><p>{{ voto.votoEmitido }}</p></div>
-                                {% else %}
-                                {% endif %}
-                            {% endfor %}
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead class="bg-primary text-white">
+                                    <tr>
+                                        <th>
+                                            <div class="d-flex justify-content-center align-items-center">
+                                                <p>Diputado</p>
+                                            </div>
+                                        </th>
+                                        <th >
+                                            <div class="d-flex justify-content-center align-items-center">
+                                                <p>Bloque al que Representa</p>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="d-flex justify-content-center align-items-center">
+                                                <img src="/assets/img/monitor/01_ICONOS/01.png">
+                                                <p>Voto</p>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for voto in pregunta.votos %}
+                                        {% set diputado = voto.nombreDiputado | findClosestDiputado(collections.diputado) %}
+                                        {% if diputado %}
+                                        <tr>
+                                            <td class="text-center align-middle" data-label="Nombre del Diputado"><a href="{{ diputado.url }}">{{ diputado.data.diputado['Nombre'] }}</td>
+                                            <td class="text-center align-middle limitid-width" data-label="Bloque">{{ diputado.data.diputado['Bloque al que representa'] }}</td>
+                                            <td class="text-center align-middle" data-label="Votaciones">{{ voto.votoEmitido }}</td>
+                                        </tr>
+                                        {% else %}
+                                        {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
                         </div>
 
                     </div>

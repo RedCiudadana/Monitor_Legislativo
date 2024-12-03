@@ -163,7 +163,7 @@ li {
 }
 
 span{
-  color: #03ac8a;
+  color: #02324F;
   font-size: 20px;
   font-weight: 800;
   font-family: 'Asap-Bold', sans-serif;
@@ -186,7 +186,7 @@ span{
 }
 
 ::-moz-selection {
-  background: #1abc9c; /* Firefox */
+  background: #02324F; /* Firefox */
   color: #fff;
   text-shadow: none;
 }
@@ -208,8 +208,8 @@ span{
 
 body {
   line-height: 1.5;
-  color: #02324f;
-  font-family: "Asap-Medium", sans-serif !important;
+  color: #02324F;
+  font-family: "Asap-Regular", sans-serif !important;
 }
 
 a {
@@ -322,7 +322,7 @@ h6 > span:not(.nocolor):not(.badge) {
 }
 
 a, p{
-  font-family: "Asap-Medium", sans-serif;;
+  font-family: "Asap-Regular", sans-serif;;
 }
 
 p,
@@ -6122,7 +6122,7 @@ body:not(.top-search-open)
 }
 
 .h-100-res{
-  height: 600px;
+  height: 400px;
 }
 
 @media (max-width:400px){
@@ -19999,7 +19999,7 @@ label.checkbox {
 
 .cuadro_perfil_diputado{
   box-shadow: 5px 5px 5px #ccc;
-  background-color: #f0f7fc;
+  background-color: #fff;
 }
 
 .cuadro_perfil_diputado .info_personal{
@@ -20020,4 +20020,153 @@ label.checkbox {
 
 .pregunta{
   margin-bottom: 10px;
+}
+
+#ordenarAlfabeticamente {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#ordenarAlfabeticamente:hover {
+  background-color: #f8f9fa;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sticky-responsive{
+  position: sticky;
+  top: 90px; 
+  height: 100%; 
+  overflow-y: auto; 
+  background-color: #f8f9fa; 
+  z-index: 10;
+  padding: 10px; 
+}
+
+@media only screen and (max-width: 960px) {
+  .sticky-responsive{
+    position: relative;
+    top: 0px;
+  }
+}
+
+.titulo-preguntas-relevantes{
+  background-color: #19417D;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titulo-preguntas-relevantes img{
+  width: 30px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.titulo-preguntas-relevantes h1{
+  color: #fff!important;
+}
+
+.pregunta-relevante-link h2:hover{
+  text-decoration: underline!important;
+}
+
+.table thead {
+  background-color: #19417D!important; /* Color azul oscuro */
+  color: white!important;
+  font-weight: bold;
+}
+
+.table thead tr th{
+  padding: 20px 0;
+  border: #19417D!important;
+}
+
+.table thead tr th img{
+  width: 30px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.table th, .table td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.table tbody{
+  background-color: #fff;
+}
+
+.table a.btn-primary {
+  background-color: #003f91;
+  border-color: #003f91;
+  color: white;
+  font-size: 0.875rem; /* Tamaño de texto más pequeño */
+  font-weight: 500;
+  padding: 6px 12px;
+}
+
+.table a.btn-primary:hover {
+  background-color: #0056b3!important;
+  border-color: #0056b3!important;
+}
+
+.limited-width {
+  max-width: 50%; /* Máximo ancho del 50% */
+  word-wrap: break-word; /* Rompe las palabras largas */
+  white-space: normal; /* Permite múltiples líneas */
+  overflow: hidden; /* Oculta el desbordamiento si es necesario */
+  text-overflow: ellipsis; /* Agrega "..." si el contenido es muy largo */
+}
+
+@media (max-width: 768px) {
+  .limited-width {
+      max-width: 100%; /* Permite que ocupe todo el ancho en pantallas pequeñas */
+  }
+}
+
+/* Estilo base para la tabla */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Configuración de las celdas en pantallas pequeñas */
+@media (max-width: 768px) {
+  .table thead {
+      display: none; /* Oculta el encabezado de la tabla */
+  }
+
+  .table tbody tr {
+      display: block; /* Hace que las filas sean bloques */
+      margin-bottom: 1rem; /* Espaciado entre filas */
+      border: 1px solid #ddd; /* Agrega un borde alrededor de cada fila */
+      border-radius: 5px; /* Opcional: bordes redondeados */
+  }
+
+  .table tbody td {
+      display: flex; /* Flex para apilar contenido */
+      justify-content: space-between; /* Espacio entre etiqueta y valor */
+      padding: 0.5rem;
+      text-align: left; /* Alinea el contenido a la izquierda */
+      border-bottom: 1px solid #ddd; /* Líneas divisorias */
+  }
+
+  .table tbody td:last-child {
+      border-bottom: none; /* Elimina la línea del último elemento */
+  }
+
+  /* Mostrar las etiquetas con data-label */
+  .table tbody td::before {
+      content: attr(data-label); /* Usa el valor de data-label */
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #666; /* Color del texto para las etiquetas */
+  }
 }
