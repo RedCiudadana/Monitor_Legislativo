@@ -1,5 +1,0 @@
-{
-    "tags": "transformacion",
-    "permalink": "transformacion/{{ page.fileSlug }}/index.html",
-    "layout": "layouts/transformacion.njk"
-}

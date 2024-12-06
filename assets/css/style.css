@@ -3723,7 +3723,7 @@ html[xmlns] .slider-wrap {
 }
 
 .header-size-md #header-wrap #logo img {
-  height: 40px;
+  height: 80px;
 }
 
 .header-size-lg #header-wrap #logo img {
@@ -3755,9 +3755,9 @@ html[xmlns] .slider-wrap {
 }
 
 @media (max-width: 992px) {
-  .standard-logo{
+  .header-size-md #header-wrap #logo img {
     width: 160px!important;
-    height: 60px!important;
+    height: 40px!important;
   }
 }
 

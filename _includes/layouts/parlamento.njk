@@ -1,0 +1,108 @@
+{% extends "src/base.njk" %}
+
+{% block head %}
+<title>{{ title }}</title>
+<link rel="stylesheet" href="/css/maingrid.css" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    
+
+<!-- Slider
+		============================================= -->
+		<section id="slider" class="bg-color">
+			<div class="container">
+				<div class="row d-flex justify-content-center">
+					<div class="col-lg-8 col-md-12 col-sm-12 d-flex align-self-center flex-column pt-5 pb-0 py-lg-6 mb-0 my-lg-4 text-center">
+
+            
+						<img style="width: 20%;margin: auto;" src="{{image}}">
+            
+						<h2 class="text-slider mb-2 text-white" style="font-size:40px!important;color: #fff!important;">{{title}}</h2>
+            <p class=" text-1xl text-white mb-4">
+              {{ description }}
+            </p>
+
+
+					</div>
+				</div>
+			</div>
+    </section>
+
+<!--POST-->
+<div class="max-w-screen-lg mx-auto " style="margin:3rem auto; padding:0 2rem">
+  <div class="grid grid-cols-4">
+    <div class="col-span-full">
+      <article>
+        <header>
+          <br>
+          
+          <br>
+          <div class=" text-sm text-gray-600 ">
+         
+              <span class="text-sm font-semibold text-gray-900">
+                <!--autor correo fecha-->
+                {{ date|dateFormat('DD/MM/YYYY')}}
+              </span>
+          </div>
+          <br>
+        </header>
+
+        <style>
+  
+          @media (max-width: 760px){
+              .presponsive{
+                  padding-left: 0!important;
+              }
+          }
+  
+        </style>
+        
+        <section class="content text-justify">
+          <div class="grid grid-cols-8">
+            <div class="col-span-6 md:col-span-4 ">
+              {{ content | safe}}
+            </div>
+          
+          </div>
+
+        </section>
+        
+      </article>
+    </div>
+    
+  </div>
+</div>
+
+<!-- Transformacion Digital
+        ============================================= -->
+
+        <section class="px-2" style="background-color: #e9f0f8;">
+          <div class="container clearfix ">
+              <div class="row py-6">
+                  
+                  <div class="col-lg-12 text-center mb-4">
+
+                      <h1 class="text-titles">Ver más dominios:</h1>
+
+                      <!-- <a href="#" class="btn">Ir a productos <i class="fa-solid fa-right-long"></i></a> -->
+                  </div>
+
+                  {% for trans in collections.transformacion %}
+                  {% if page.url === trans.url %}
+                  {% else%}
+                  <div class="col-lg-4 my-4 text-center">
+                      <a href="{{trans.url}}"><div class="cuadro_plataformas">
+                          <img src="{{trans.data.image}}">
+                          <h2 class="text-titles hover_white">{{trans.data.title}}</h2>
+                          <p>{{trans.data.description}}</p>
+                      </div></a>
+                  </div>
+                  {% endif %}
+                  {% endfor %}
+
+              </div>
+          </div>
+      </section>
+
+{% endblock %}
