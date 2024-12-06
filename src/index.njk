@@ -30,7 +30,7 @@ permalink: "index.html"
             <div class="container clearfix ">
                 <div class="row py-6">
 
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 my-2">
                         <a href="/parlamento_abierto/index.html">
                             <div class="cuadros_accion">
                                 <img style="width: 200px; height: auto;" src="/assets/img/monitor/01_ICONOS/ML-09.png">
@@ -40,7 +40,7 @@ permalink: "index.html"
                         </a>
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 my-2">
                         <a href="/congreso_datos/index.html">
                             <div class="cuadros_accion">
                                 <img style="width: 200px; height: auto;" src="/assets/img/monitor/01_ICONOS/ML-10.png">
@@ -50,7 +50,7 @@ permalink: "index.html"
                         </a>
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 my-2">
                         <a href="/analisis_legislativo/index.html">
                             <div class="cuadros_accion">
                                 <img style="width: 200px; height: auto;" src="/assets/img/monitor/01_ICONOS/ML-11.png">
@@ -80,7 +80,7 @@ permalink: "index.html"
                     </div>
 
                     {% for recurso in collections.recursos%}
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 my-2">
                         <div class="cuadro_recurso">
                             <img class="w-100" src="{{recurso.data.image}}">
                             <div style="padding: 30px;">
@@ -105,7 +105,7 @@ permalink: "index.html"
 
                     {% for video in collections.videos | limit(2) | reverse %}
                     
-                    <div class="col-lg-6 text-center">
+                    <div class="col-lg-6 text-center my-2">
                         <iframe width="560" height="315" src="{{video.data.link | safe}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
 

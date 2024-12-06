@@ -3723,7 +3723,7 @@ html[xmlns] .slider-wrap {
 }
 
 .header-size-md #header-wrap #logo img {
-  height: 80px;
+  height: 40px;
 }
 
 .header-size-lg #header-wrap #logo img {
@@ -3751,6 +3751,13 @@ html[xmlns] .slider-wrap {
 
   .sticky-header-shrink #header-wrap #logo img {
     height: 60px;
+  }
+}
+
+@media (max-width: 992px) {
+  .standard-logo{
+    width: 160px!important;
+    height: 60px!important;
   }
 }
 
@@ -6130,6 +6137,7 @@ body:not(.top-search-open)
     background-image: url('/assets/img/monitor/03_SLIDER/SLIDER.png');
     background-size: 100%;
     background-repeat: no-repeat;
+    background-size: cover;
   }
 
   .h-100-res{
