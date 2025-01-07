@@ -1,0 +1,110 @@
+/* Columna Izquierda */
+.logo_footer{
+    width: 250px;
+    height: auto;
+    margin-bottom: 20px;
+    transition: 0.5s all ease;
+}
+
+.logo_footer:hover{
+    transform: scale(1.1);
+}
+
+.text_footer{
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.title_footer{
+    color: #fff;
+    font-size: 15px;
+    margin-bottom: 0px;
+}
+
+.text_footer_2{
+    font-size: 18px;
+    color: #000;
+    margin-bottom: 0;
+}
+
+.red_footer{
+    width: 50px;
+    height: auto;
+    margin-right: 2px;
+    transition: 0.5s all ease;
+}
+
+.red_footer:hover{
+    transform: scale(1.1);
+}
+
+/* Columna Central */
+.flex-container {
+    display: flex;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 960px) {
+    .flex-container{
+        display: flex;
+        justify-content: start;
+    }
+  }
+
+.links-footer {
+    background-color: #000;
+    text-align: left;
+    font-family: Arial, sans-serif;
+    display: block;
+}
+
+.links-footer > a,
+.links-footer > div {
+    position: relative;
+    display: block;
+    margin-right: 20px;
+    color: #fff;
+    padding: 4px 0;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.links-footer a ul,
+.links-footer div ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background-color: #000;
+    border: 1px solid #fff;
+    display: none;
+    min-width: 120px;
+}
+
+.links-footer > a:hover ul,
+.links-footer > div:hover ul {
+    display: block;
+    z-index: 10000;
+}
+
+.links-footer a ul li,
+.links-footer div ul li {
+    border-bottom: 1px solid #444;
+}
+
+.links-footer a ul li a,
+.links-footer div ul li a {
+    display: block;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+    white-space: nowrap
+}
+
+.links-footer a ul li a:hover,
+.links-footer div ul li a:hover {
+    background-color: #f2f2f2;
+    color: #000;
+}
