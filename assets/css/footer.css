@@ -67,6 +67,11 @@
     padding: 4px 0;
     text-decoration: none;
     cursor: pointer;
+    transition: 0.5s all ease;
+}
+
+.links-footer > a:hover{
+    text-decoration: underline!important;
 }
 
 .links-footer a ul,
