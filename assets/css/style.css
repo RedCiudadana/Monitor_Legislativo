@@ -20178,3 +20178,19 @@ label.checkbox {
       color: #666; /* Color del texto para las etiquetas */
   }
 }
+
+.logos{
+  display: flex;
+  align-items: center;
+}
+
+.logos .logo1{
+  width: 160px;
+  height: 31px;
+  margin-right: 10px;
+}
+
+.logos .logo2{
+  width: 160px;
+  height: 24px;
+}
