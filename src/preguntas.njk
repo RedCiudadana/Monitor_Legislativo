@@ -16,91 +16,275 @@ tags:
 {% endblock %}
 
 {% block content %}
+<section id="slider" class="bg-color">
+  <div class="container">
+    <div class="row d-flex">
+      <div class="col-lg-12 col-md-12 col-sm-12 d-flex align-self-center flex-column pt-5 pb-0 py-lg-6 mb-0 my-lg-4">
+        <h2 class="text-slider2" style="color: #fff!important;">
+          {{ pregunta.sesion.nombreSesion }} - Pregunta {{ pregunta['Número de Pregunta'] }}
+        </h2>
+        <h2 class="text-slider" style="font-size:40px!important; line-height: 45px; color: #fff!important;">
+          {{ pregunta['Nombre de Pregunta'] }}
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <!-- Slider
-		============================================= -->
-		<section id="slider" class="bg-color">
-			<div class="container">
-				<div class="row d-flex">
-					<div class="col-lg-12 col-md-12 col-sm-12 d-flex align-self-center flex-column pt-5 pb-0 py-lg-6 mb-0 my-lg-4">
+<section class="px-2">
+  <div class="container clearfix ">
+    <div class="row py-6">
+      <div class="col-lg-12 my-4">
+        <span class="breadcrumb_v2">
+          <a href="/analisis_legislativo/index.html">Análisis Legislativo</a>
+          <p>/</p>
+          {% for sesion in collections.sesion%}
+            {% if pregunta.sesion.nombreSesion === sesion.data.sesion.nombreSesion%}
+            <a href="{{sesion.url}}">{{ pregunta.sesion.nombreSesion }}</a>
+            {% endif %}
+          {% endfor %}
+          <p>/</p>
+          <a href="#" style="pointer-events: none;"> {{ pregunta['Nombre de Pregunta'] }} </a>
+        </span>
+      </div>
 
-                        <h2 class="text-slider2" style="color: #fff!important;">
-                            Pregunta {{ pregunta['Número de Pregunta'] }}
-						</h2>
-						<h2 class="text-slider" style="font-size:40px!important; line-height: 45px; color: #fff!important;">
-                            {{ pregunta['Nombre de Pregunta'] }}
-                        </h2>
-						
+      <div class="col-lg-12 my-4">
 
-					</div>
-				</div>
-			</div>
-        </section>
+        {# Contabilizar los votos #}
+        {% set aFavorCount = 0 %}
+        {% set enContraCount = 0 %}
+        {% set ausenteCount = 0 %}
 
-        <!-- Iniciativas
-        ============================================= -->
+        {% for voto in pregunta.votos %}
+          {% if voto.votoEmitido == 'A FAVOR' %}
+            {% set aFavorCount = aFavorCount + 1 %}
+          {% elseif voto.votoEmitido == 'EN CONTRA' %}
+            {% set enContraCount = enContraCount + 1 %}
+          {% elseif voto.votoEmitido == 'AUSENTE' %}
+            {% set ausenteCount = ausenteCount + 1 %}
+          {% endif %}
+        {% endfor %}
 
-        <section class="px-2">
-            <div class="container clearfix ">
-                <div class="row py-6">
-                    <div class="col-lg-12 my-4">
-                        <span class="breadcrumb_v2">
-                            <a href="/analisis_legislativo/index.html">Análisis Legislativo</a> 
-                            <p>/</p>
-                            {% for sesion in collections.sesion%}
-                            {% if pregunta.sesion.nombreSesion === sesion.data.sesion.nombreSesion%}
-                            <a href="{{sesion.url}}">{{ pregunta.sesion.nombreSesion }}</a>
-                            {% endif %}
-                            {% endfor %}
-                            <p>/</p>
-                            <a href="#" style="pointer-events: none;"> {{ pregunta['Nombre de Pregunta'] }} </a>
-                        </span>
-                    </div>
-                    <div class="col-lg-12 my-4">
+        {% set total = aFavorCount + enContraCount + ausenteCount %}
 
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-hover">
-                                <thead class="bg-primary text-white">
-                                    <tr>
-                                        <th>
-                                            <div class="d-flex justify-content-center align-items-center">
-                                                <p>Diputado</p>
-                                            </div>
-                                        </th>
-                                        <th >
-                                            <div class="d-flex justify-content-center align-items-center">
-                                                <p>Bloque al que Representa</p>
-                                            </div>
-                                        </th>
-                                        <th>
-                                            <div class="d-flex justify-content-center align-items-center">
-                                                <img src="/assets/img/monitor/01_ICONOS/01.png">
-                                                <p>Voto</p>
-                                            </div>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for voto in pregunta.votos %}
-                                        {% set diputado = voto.nombreDiputado | findClosestDiputado(collections.diputado) %}
-                                        {% if diputado %}
-                                        <tr>
-                                            <td class="text-center align-middle" data-label="Nombre del Diputado"><a href="{{ diputado.url }}">{{ diputado.data.diputado['Nombre'] }}</td>
-                                            <td class="text-center align-middle limitid-width" data-label="Bloque">{{ diputado.data.diputado['Bloque al que representa'] }}</td>
-                                            <td class="text-center align-middle" data-label="Votaciones">{{ voto.votoEmitido }}</td>
-                                        </tr>
-                                        {% else %}
-                                        {% endif %}
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
+        <!-- Contenedor de la gráfica -->
+        <div class="row mb-4">
+          <div class="col-lg-4">
+            <canvas id="myChart" width="400" height="200"></canvas>
+            <button id="showAll" style="display:none;" class="btn btn-secondary mt-3">
+              Mostrar Todos
+            </button>
+          </div>
 
-                    </div>
-
+          <div class="col-lg-8" style="display: flex; justify-content: space-between; flex-direction: column;"> 
+            <div class="row mb-3">
+              <div class="col-lg-12 mb-3">
+                <h2>Distribución de los Votos</h2>
+              </div>
+              <div class="col-lg-4">
+                <div class="card text-white mb-3" style="background-color: #09334e;">
+                  <div class="card-body text-center">
+                    <h5 class="text-white">A Favor</h5>
+                    <p class="text-white" style="font-size: 50px; font-weight: 600;">{{ aFavorCount }}</p>
+                    <p class="text-white">({{ ((aFavorCount * 100) / total) | round(2) }}%)</p>
+                  </div>
                 </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="card text-white mb-3" style="background-color: #C0392B;">
+                  <div class="card-body text-center">
+                    <h5 class="text-white">En Contra</h5>
+                    <p class="text-white" style="font-size: 50px; font-weight: 600;">{{ enContraCount }}</p>
+                    <p class="text-white">({{ ((enContraCount * 100) / total) | round(2) }}%)</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="card text-white mb-3" style="background-color: #7F8C8D;">
+                  <div class="card-body text-center">
+                    <h5 class="text-white">Ausente</h5>
+                    <p class="text-white" style="font-size: 50px; font-weight: 600;">{{ ausenteCount }}</p>
+                    <p class="text-white">({{ ((ausenteCount * 100) / total) | round(2) }}%)</p>
+                  </div>
+                </div>
+              </div>
             </div>
-        </section>
+
+            <!-- Buscador flexible -->
+            <div class="row mb-3">
+              <div class="col-lg-12">
+                <label for="searchDiputados" class="form-label">
+                  <h2 style="text-transform:none;">Buscar por Diputado o Bloque:</h2>
+                </label>
+                <div class="position-relative">
+                  <!-- Ajusta el padding-right para que no se encime el texto con el botón -->
+                  <input type="text" 
+                         class="form-control" 
+                         id="searchDiputados" 
+                         placeholder="Ingrese el nombre del diputado o el bloque..."
+                         style="padding-right: 2.5rem;">
+                  
+                  <!-- Botón "X" absoluto, pegado a la derecha dentro del input -->
+                  <button type="button" 
+                          class="position-absolute end-0 translate-middle-y btn btn-light py-2 px-4" 
+                          style="top: 2px;"
+                          id="clearSearch">
+                    &times;
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabla de diputados -->
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover">
+            <thead class="bg-primary text-white">
+              <tr>
+                <th>Diputado</th>
+                <th>Bloque al que Representa</th>
+                <th>Voto</th>
+              </tr>
+            </thead>
+            <tbody id="diputadosTableBody">
+              {% for voto in pregunta.votos %}
+                {% set diputado = voto.nombreDiputado | findClosestDiputado(collections.diputado) %}
+                {% if diputado %}
+                  <tr data-voto="{{ voto.votoEmitido }}">
+                    <td class="text-center align-middle" data-label="Diputado">
+                      <a href="{{ diputado.url }}">{{ diputado.data.diputado['Nombre'] }}</a>
+                    </td>
+                    <td class="text-center align-middle limitid-width" data-label="Bloque">
+                      {{ diputado.data.diputado['Bloque al que representa'] }}
+                    </td>
+                    <td class="text-center align-middle" data-label="Voto">
+                      {{ voto.votoEmitido }}
+                    </td>
+                  </tr>
+                {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div id="chart-data"
+     data-afavor="{{ aFavorCount }}"
+     data-encontra="{{ enContraCount }}"
+     data-ausente="{{ ausenteCount }}"
+     style="display: none;">
+</div>
+{% endblock %}
+
+{% block body_javascripts %}
+<!-- Incluir la librería de Chart.js (ejemplo con CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+// --------------- LÓGICA PARA LA GRÁFICA ---------------
+
+// 1. Obtenemos conteos de "A FAVOR", "EN CONTRA", "AUSENTE"
+var chartDataEl = document.getElementById('chart-data');
+var aFavor = parseInt(chartDataEl.getAttribute('data-afavor'), 10) || 0;
+var enContra = parseInt(chartDataEl.getAttribute('data-encontra'), 10) || 0;
+var ausente = parseInt(chartDataEl.getAttribute('data-ausente'), 10) || 0;
+
+// 2. Variable para saber qué filtro de voto está activo. Puede ser:
+//    "ALL", "A FAVOR", "EN CONTRA" o "AUSENTE"
+var currentFilter = 'ALL';
+
+// 3. Inicializamos la gráfica
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+  type: 'pie',
+  data: {
+    labels: ['A favor', 'En contra', 'Ausente'],
+    datasets: [{
+      data: [aFavor, enContra, ausente],
+      backgroundColor: ['#09334e', '#C0392B', '#7F8C8D']
+    }]
+  },
+  options: {
+    onClick: function (evt, elements) {
+      if (elements && elements.length) {
+        var index = elements[0].index;
+        var label = this.data.labels[index].toUpperCase();  // "A FAVOR", "EN CONTRA", "AUSENTE"
+        // Al hacer clic en la gráfica, definimos currentFilter
+        currentFilter = label;
+        document.getElementById('showAll').style.display = 'inline-block';
+
+        // Aplicamos la lógica combinada de filtrado
+        applyFilters();
+      }
+    },
+    plugins: {
+      legend: { position: 'top' }
+    }
+  }
+});
+
+// 4. Al hacer clic en "Mostrar Todos", reseteamos el filtro de la gráfica
+document.getElementById('showAll').addEventListener('click', function() {
+  currentFilter = 'ALL';
+  this.style.display = 'none';
+  applyFilters();
+});
 
 
+// --------------- LÓGICA PARA EL BUSCADOR ---------------
+
+var searchInput = document.getElementById('searchDiputados');
+var clearSearchBtn = document.getElementById('clearSearch');
+
+// Cada vez que el usuario escribe, aplicamos la lógica combinada
+searchInput.addEventListener('input', function() {
+  applyFilters();
+});
+
+// Al hacer clic en la "X", limpiamos el texto y aplicamos filtros
+clearSearchBtn.addEventListener('click', function() {
+  searchInput.value = '';
+  applyFilters();
+});
+
+// --------------- FUNCIÓN COMBINADA DE FILTROS ---------------
+
+// Esta función respeta:
+// 1. El filtro de la gráfica (currentFilter)
+// 2. El texto ingresado en el buscador
+function applyFilters() {
+  var rows = document.querySelectorAll('#diputadosTableBody tr');
+  var query = searchInput.value.toLowerCase();  // lo que se busca
+
+  rows.forEach(function(row) {
+    // 1. ¿Coincide con el filtro de la gráfica?
+    //    Si currentFilter es "ALL", no filtramos por voto.
+    //    Si no, comparamos con row.getAttribute('data-voto').
+    var votoRow = row.getAttribute('data-voto');
+    var matchChartFilter =
+      (currentFilter === 'ALL') || (votoRow === currentFilter);
+
+    // 2. ¿Coincide con el texto del buscador?
+    var nombreDiputado = row.querySelector('[data-label="Diputado"]')?.innerText.toLowerCase() || '';
+    var bloque = row.querySelector('[data-label="Bloque"]')?.innerText.toLowerCase() || '';
+    var matchSearch = (nombreDiputado.includes(query) || bloque.includes(query));
+
+    // 3. Se muestra la fila solo si pasa ambos filtros
+    if (matchChartFilter && matchSearch) {
+      row.style.display = '';
+    } else {
+      row.style.display = 'none';
+    }
+  });
+}
+
+// Nota: Al cargar la página por primera vez, la tabla muestra todo sin filtrar.
+// Si deseas forzar la ejecución de applyFilters() inicialmente, podrías llamarla aquí:
+// applyFilters();
+</script>
 {% endblock %}
