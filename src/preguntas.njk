@@ -54,6 +54,7 @@ tags:
         {% set aFavorCount = 0 %}
         {% set enContraCount = 0 %}
         {% set ausenteCount = 0 %}
+        {% set licenciaCount = 0 %}
 
         {% for voto in pregunta.votos %}
           {% if voto.votoEmitido == 'A FAVOR' %}
@@ -62,10 +63,12 @@ tags:
             {% set enContraCount = enContraCount + 1 %}
           {% elseif voto.votoEmitido == 'AUSENTE' %}
             {% set ausenteCount = ausenteCount + 1 %}
+          {% elseif voto.votoEmitido == 'LICENCIA' %}
+            {% set licenciaCount = licenciaCount + 1 %}
           {% endif %}
         {% endfor %}
 
-        {% set total = aFavorCount + enContraCount + ausenteCount %}
+        {% set total = aFavorCount + enContraCount + ausenteCount + licenciaCount %}
 
         <!-- Contenedor de la gráfica -->
         <div class="row mb-4">
@@ -81,8 +84,8 @@ tags:
               <div class="col-lg-12 mb-3">
                 <h2>Distribución de los Votos</h2>
               </div>
-              <div class="col-lg-4">
-                <div class="card text-white mb-3" style="background-color: #09334e;">
+              <div class="col-lg-3">
+                <div class="card text-white mb-3" style="background-color: #16421a;">
                   <div class="card-body text-center">
                     <h5 class="text-white">A Favor</h5>
                     <p class="text-white" style="font-size: 50px; font-weight: 600;">{{ aFavorCount }}</p>
@@ -90,7 +93,7 @@ tags:
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4">
+              <div class="col-lg-3">
                 <div class="card text-white mb-3" style="background-color: #C0392B;">
                   <div class="card-body text-center">
                     <h5 class="text-white">En Contra</h5>
@@ -99,12 +102,21 @@ tags:
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4">
+              <div class="col-lg-3">
                 <div class="card text-white mb-3" style="background-color: #7F8C8D;">
                   <div class="card-body text-center">
                     <h5 class="text-white">Ausente</h5>
                     <p class="text-white" style="font-size: 50px; font-weight: 600;">{{ ausenteCount }}</p>
                     <p class="text-white">({{ ((ausenteCount * 100) / total) | round(2) }}%)</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="card text-white mb-3" style="background-color: #09334e;">
+                  <div class="card-body text-center">
+                    <h5 class="text-white">Licencia</h5>
+                    <p class="text-white" style="font-size: 50px; font-weight: 600;">{{ licenciaCount }}</p>
+                    <p class="text-white">({{ ((licenciaCount * 100) / total) | round(2) }}%)</p>
                   </div>
                 </div>
               </div>
@@ -177,6 +189,7 @@ tags:
      data-afavor="{{ aFavorCount }}"
      data-encontra="{{ enContraCount }}"
      data-ausente="{{ ausenteCount }}"
+     data-licencia="{{ licenciaCount }}"
      style="display: none;">
 </div>
 {% endblock %}
@@ -193,6 +206,7 @@ var chartDataEl = document.getElementById('chart-data');
 var aFavor = parseInt(chartDataEl.getAttribute('data-afavor'), 10) || 0;
 var enContra = parseInt(chartDataEl.getAttribute('data-encontra'), 10) || 0;
 var ausente = parseInt(chartDataEl.getAttribute('data-ausente'), 10) || 0;
+var licencia = parseInt(chartDataEl.getAttribute('data-licencia'), 10) || 0;
 
 // 2. Variable para saber qué filtro de voto está activo. Puede ser:
 //    "ALL", "A FAVOR", "EN CONTRA" o "AUSENTE"
@@ -203,10 +217,10 @@ var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
   type: 'pie',
   data: {
-    labels: ['A favor', 'En contra', 'Ausente'],
+    labels: ['A favor', 'En contra', 'Ausente', 'Licencia'],
     datasets: [{
-      data: [aFavor, enContra, ausente],
-      backgroundColor: ['#09334e', '#C0392B', '#7F8C8D']
+      data: [aFavor, enContra, ausente, licencia],
+      backgroundColor: ['#16421a', '#C0392B', '#7F8C8D', '#09334e']
     }]
   },
   options: {
